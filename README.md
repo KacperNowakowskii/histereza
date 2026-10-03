@@ -79,10 +79,3 @@ npm.cmd run test:browser
 - `server/data/demo.sqlite`: baza tworzona przy pierwszym starcie, ignorowana przez Git. Encje przechowuje dokument stanu, a kalendarz rezerwacji dodatkowo tabela z triggerami blokującymi kolizje i bufor.
 - `server/data/seed/reference.json`, `server/data/samples/*.csv`: automatycznie generowane fikcyjne dane (8 miejsc, 25 lokali, 7 kurierów, 9 pojazdów, 300 historycznych postojów).
 
-## Granice MVP
-
-System jest lokalnym demonstratorem zgodnie ze specyfikacją. Przełącznik ról i nagłówek `x-role` nie są logowaniem. Serwer nasłuchuje wyłącznie na `127.0.0.1`. Nie udostępniaj go publicznie bez uwierzytelniania i autoryzacji użytkowników.
-
-GPS, czujniki, SMS, ruch i płatności są symulowane; powiadomienia są zapisywane w systemie. QR prowadzi do lokalnego adresu — telefon nie uzyska do niego dostępu przez własne `localhost`. Mapy korzystają z kafelków OpenStreetMap i wymagają internetu; pozostałe dane i logika działają lokalnie. Hub rowerowy oraz tryb pozagodzinny są odroczone jako SHOULD. Reguły SCT są demonstracyjnymi regułami ze specyfikacji.
-
-Decyzje i rozstrzygnięcia sprzeczności: [docs/DECISIONS.md](docs/DECISIONS.md). Szczegółowa weryfikacja: [docs/VERIFICATION.md](docs/VERIFICATION.md).
