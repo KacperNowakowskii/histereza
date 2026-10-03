@@ -7,7 +7,6 @@ Lokalne MVP dla hipotetycznych miejsc w historycznym centrum Krakowa. Wspólny p
 Wymagane Node.js 24 i npm. W terminalu VS Code:
 
 ```powershell
-cd "C:\Users\kacpe\OneDrive\Pulpit\histereza"
 npm.cmd ci
 npm.cmd run build
 npm.cmd start
