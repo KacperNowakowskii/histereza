@@ -1,0 +1,22 @@
+PRAGMA journal_mode=WAL;
+PRAGMA foreign_keys=ON;
+CREATE TABLE IF NOT EXISTS state (id INTEGER PRIMARY KEY CHECK(id=1), payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS reservations (
+ id TEXT PRIMARY KEY, bayId TEXT NOT NULL, stopId TEXT, externalParkingId TEXT,
+ vehicleId TEXT, deliveryIds TEXT NOT NULL, start INTEGER NOT NULL, end INTEGER NOT NULL,
+ status TEXT NOT NULL, version INTEGER NOT NULL,
+ CHECK(end > start), CHECK((stopId IS NOT NULL AND vehicleId IS NOT NULL AND deliveryIds != '[]') OR externalParkingId IS NOT NULL)
+);
+CREATE INDEX IF NOT EXISTS reservation_calendar ON reservations(bayId,start,end,status);
+CREATE TRIGGER IF NOT EXISTS no_overlap_insert BEFORE INSERT ON reservations
+WHEN NEW.status='confirmed' BEGIN
+ SELECT RAISE(ABORT, 'Konflikt rezerwacji lub bufora') WHERE EXISTS (
+ SELECT 1 FROM reservations r WHERE r.bayId=NEW.bayId AND r.status IN ('confirmed','completed')
+ AND NEW.start < r.end + 300000 AND NEW.end + 300000 > r.start);
+END;
+CREATE TRIGGER IF NOT EXISTS no_overlap_update BEFORE UPDATE ON reservations
+WHEN NEW.status='confirmed' BEGIN
+ SELECT RAISE(ABORT, 'Konflikt rezerwacji lub bufora') WHERE EXISTS (
+ SELECT 1 FROM reservations r WHERE r.id != NEW.id AND r.bayId=NEW.bayId AND r.status IN ('confirmed','completed')
+ AND NEW.start < r.end + 300000 AND NEW.end + 300000 > r.start);
+END;

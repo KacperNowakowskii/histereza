@@ -1,0 +1,28 @@
+{
+  "name": "histereza",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run typecheck && npm run build -w client",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:smoke": "node scripts/smoke.mjs",
+    "test:browser": "node scripts/browser.mjs",
+    "start": "npm run start -w server"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.0.0",
+    "concurrently": "^9.0.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.1.11"
+  },
+  "description": "Miejski system koordynacji dostaw",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ]
+}

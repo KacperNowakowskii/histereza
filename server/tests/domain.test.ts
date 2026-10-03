@@ -1,0 +1,16 @@
+import {it,expect} from 'vitest';
+import { seed } from '../src/db/seed';
+import { at } from '../src/sim/clock';
+import { within,available,legal } from '../src/domain/calendar';
+import { estimate,percentile } from '../src/domain/estimator';
+import { distance,travelMin } from '../src/domain/geo';
+import { orderDeliveries } from '../src/domain/planner';
+import { createPlan } from '../src/domain/planner';
+import { decideGate } from '../src/domain/gate';
+import { repairPlan } from '../src/domain/repair';
+import { MINUTE } from '@histereza/shared/config';
+it('okna przez północ i zakaz poza oknem',()=>{expect(within('2026-10-07','20:00','09:30',at('2026-10-07','08:00'),at('2026-10-07','09:00'))).toBe(true);expect(within('2026-10-07','20:00','09:30',at('2026-10-07','09:00'),at('2026-10-07','10:00'))).toBe(false);});
+it('zmiana funkcji miejsca blokuje dostawę',()=>{const s=seed();s.schedules[0].function='garden';expect(legal(s,'bay1',at(s.planningDate,'08:00'),at(s.planningDate,'08:15'))).toBe(false);});
+it('percentyle mogą skracać i wydłużać, z dolną granicą p50',()=>{const h=Array.from({length:10},(_,i)=>({businessId:'b',bayId:'bay',cargoType:'standard',quantity:1,durationMin:i+1,excluded:false}));expect(estimate(h,'b','bay','standard')).toBe(8);expect(estimate(h,'b','bay','standard',1)).toBe(5);h.push({...h[0],durationMin:1000,excluded:true});expect(estimate(h,'b','bay','standard')).toBe(8);});
+it('haversine i podróż',()=>{expect(distance({lat:50,lng:20},{lat:50,lng:20})).toBe(0);expect(travelMin({lat:50,lng:20},{lat:50.01,lng:20})).toBeGreaterThan(1);});
+it('planer i brama nie mutują wejścia',()=>{const s=seed();const snapshot=structuredClone(s);expect(createPlan(s,s.planningDate)).not.toBe(s);decideGate(s,'courier1');expect(s).toEqual(snapshot);});

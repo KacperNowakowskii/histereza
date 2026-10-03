@@ -1,0 +1,3866 @@
+{
+  "now": 1791298800000,
+  "planningDate": "2026-10-07",
+  "online": true,
+  "organizations": [
+    {
+      "id": "org1",
+      "name": "Wisła Logistyka",
+      "type": "carrier",
+      "size": "large"
+    },
+    {
+      "id": "org2",
+      "name": "Kazimierz Dostawy",
+      "type": "carrier",
+      "size": "small"
+    },
+    {
+      "id": "org3",
+      "name": "Kurier Anna",
+      "type": "independent",
+      "size": "small"
+    },
+    {
+      "id": "org4",
+      "name": "Kurier Jan",
+      "type": "independent",
+      "size": "small"
+    }
+  ],
+  "users": [
+    {
+      "id": "user1",
+      "orgId": "org1",
+      "role": "courier"
+    },
+    {
+      "id": "user2",
+      "orgId": "org1",
+      "role": "courier"
+    },
+    {
+      "id": "user3",
+      "orgId": "org1",
+      "role": "courier"
+    },
+    {
+      "id": "user4",
+      "orgId": "org2",
+      "role": "courier"
+    },
+    {
+      "id": "user5",
+      "orgId": "org2",
+      "role": "courier"
+    },
+    {
+      "id": "user6",
+      "orgId": "org3",
+      "role": "independent"
+    },
+    {
+      "id": "user7",
+      "orgId": "org4",
+      "role": "independent"
+    }
+  ],
+  "couriers": [
+    {
+      "id": "courier1",
+      "userId": "user1",
+      "orgId": "org1",
+      "regionIds": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "idle",
+      "location": {
+        "lat": 50.054,
+        "lng": 19.944
+      },
+      "loaded": false,
+      "online": true,
+      "readyAt": 1791349200000,
+      "constraints": []
+    },
+    {
+      "id": "courier2",
+      "userId": "user2",
+      "orgId": "org1",
+      "regionIds": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "idle",
+      "location": {
+        "lat": 50.054,
+        "lng": 19.944
+      },
+      "loaded": false,
+      "online": true,
+      "readyAt": 1791349200000,
+      "constraints": []
+    },
+    {
+      "id": "courier3",
+      "userId": "user3",
+      "orgId": "org1",
+      "regionIds": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "idle",
+      "location": {
+        "lat": 50.054,
+        "lng": 19.944
+      },
+      "loaded": false,
+      "online": true,
+      "readyAt": 1791349200000,
+      "constraints": []
+    },
+    {
+      "id": "courier4",
+      "userId": "user4",
+      "orgId": "org2",
+      "regionIds": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "idle",
+      "location": {
+        "lat": 50.054,
+        "lng": 19.944
+      },
+      "loaded": false,
+      "online": true,
+      "readyAt": 1791349200000,
+      "constraints": []
+    },
+    {
+      "id": "courier5",
+      "userId": "user5",
+      "orgId": "org2",
+      "regionIds": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "idle",
+      "location": {
+        "lat": 50.054,
+        "lng": 19.944
+      },
+      "loaded": false,
+      "online": true,
+      "readyAt": 1791349200000,
+      "constraints": []
+    },
+    {
+      "id": "courier6",
+      "userId": "user6",
+      "orgId": "org3",
+      "regionIds": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "idle",
+      "location": {
+        "lat": 50.054,
+        "lng": 19.944
+      },
+      "loaded": false,
+      "online": true,
+      "readyAt": 1791349200000,
+      "constraints": []
+    },
+    {
+      "id": "courier7",
+      "userId": "user7",
+      "orgId": "org4",
+      "regionIds": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "idle",
+      "location": {
+        "lat": 50.054,
+        "lng": 19.944
+      },
+      "loaded": false,
+      "online": true,
+      "readyAt": 1791349200000,
+      "constraints": []
+    }
+  ],
+  "models": [
+    {
+      "id": "model1",
+      "lengthM": 4.4,
+      "widthM": 1.8,
+      "heightM": 2,
+      "maxLoadKg": 1500,
+      "gvwKg": 3500
+    },
+    {
+      "id": "model2",
+      "lengthM": 4.7,
+      "widthM": 1.84,
+      "heightM": 2.1,
+      "maxLoadKg": 1500,
+      "gvwKg": 3500
+    },
+    {
+      "id": "model3",
+      "lengthM": 5,
+      "widthM": 1.8800000000000001,
+      "heightM": 2.2,
+      "maxLoadKg": 1500,
+      "gvwKg": 3500
+    },
+    {
+      "id": "model4",
+      "lengthM": 5.300000000000001,
+      "widthM": 1.92,
+      "heightM": 2.3,
+      "maxLoadKg": 1500,
+      "gvwKg": 3500
+    },
+    {
+      "id": "model5",
+      "lengthM": 5.6000000000000005,
+      "widthM": 1.96,
+      "heightM": 2.4,
+      "maxLoadKg": 1500,
+      "gvwKg": 4500
+    },
+    {
+      "id": "model6",
+      "lengthM": 9,
+      "widthM": 2,
+      "heightM": 2.5,
+      "maxLoadKg": 1500,
+      "gvwKg": 3500
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "vehicle1",
+      "orgId": "org1",
+      "registrationNumber": "KR DEM1",
+      "vehicleModelId": "model1",
+      "fuelType": "diesel",
+      "emissionStandard": 6,
+      "productionYear": 2020,
+      "hasCooling": true,
+      "dimensionsVerified": true
+    },
+    {
+      "id": "vehicle2",
+      "orgId": "org1",
+      "registrationNumber": "KR DEM2",
+      "vehicleModelId": "model2",
+      "fuelType": "diesel",
+      "emissionStandard": 6,
+      "productionYear": 2020,
+      "hasCooling": true,
+      "dimensionsVerified": true
+    },
+    {
+      "id": "vehicle3",
+      "orgId": "org1",
+      "registrationNumber": "KR DEM3",
+      "vehicleModelId": "model3",
+      "fuelType": "diesel",
+      "emissionStandard": 6,
+      "productionYear": 2020,
+      "hasCooling": true,
+      "dimensionsVerified": true
+    },
+    {
+      "id": "vehicle4",
+      "orgId": "org2",
+      "registrationNumber": "KR DEM4",
+      "vehicleModelId": "model4",
+      "fuelType": "diesel",
+      "emissionStandard": 6,
+      "productionYear": 2020,
+      "hasCooling": true,
+      "dimensionsVerified": true
+    },
+    {
+      "id": "vehicle5",
+      "orgId": "org2",
+      "registrationNumber": "KR DEM5",
+      "vehicleModelId": "model5",
+      "fuelType": "diesel",
+      "emissionStandard": 6,
+      "productionYear": 2020,
+      "hasCooling": true,
+      "dimensionsVerified": true
+    },
+    {
+      "id": "vehicle6",
+      "orgId": "org3",
+      "registrationNumber": "KR DEM6",
+      "vehicleModelId": "model1",
+      "fuelType": "diesel",
+      "emissionStandard": 6,
+      "productionYear": 2020,
+      "hasCooling": true,
+      "dimensionsVerified": true
+    },
+    {
+      "id": "vehicle7",
+      "orgId": "org4",
+      "registrationNumber": "KR DEM7",
+      "vehicleModelId": "model2",
+      "fuelType": "electric",
+      "emissionStandard": 6,
+      "productionYear": 2020,
+      "hasCooling": true,
+      "dimensionsVerified": true
+    },
+    {
+      "id": "vehicle8",
+      "orgId": "org1",
+      "registrationNumber": "KR DEM8",
+      "vehicleModelId": "model1",
+      "fuelType": "diesel",
+      "emissionStandard": 5,
+      "productionYear": 2012,
+      "hasCooling": true,
+      "dimensionsVerified": true
+    },
+    {
+      "id": "vehicle9",
+      "orgId": "org1",
+      "registrationNumber": "KR DEM9",
+      "vehicleModelId": "model6",
+      "fuelType": "diesel",
+      "emissionStandard": 6,
+      "productionYear": 2020,
+      "hasCooling": true,
+      "dimensionsVerified": true
+    }
+  ],
+  "zones": [
+    {
+      "id": "A",
+      "name": "Kazimierz",
+      "deliveryWindows": [
+        {
+          "from": "20:00",
+          "to": "09:30"
+        },
+        {
+          "from": "13:00",
+          "to": "14:00"
+        }
+      ],
+      "sct": true,
+      "speedKmh": 18
+    },
+    {
+      "id": "B",
+      "name": "Stare Miasto",
+      "deliveryWindows": [
+        {
+          "from": "20:00",
+          "to": "09:30"
+        }
+      ],
+      "sct": true,
+      "speedKmh": 15
+    },
+    {
+      "id": "C",
+      "name": "Podzamcze",
+      "deliveryWindows": [
+        {
+          "from": "23:00",
+          "to": "09:30"
+        }
+      ],
+      "sct": true,
+      "speedKmh": 18
+    }
+  ],
+  "bays": [
+    {
+      "id": "bay1",
+      "name": "Plac Nowy 1",
+      "groupId": "group1",
+      "zoneId": "A",
+      "lat": 50.0515,
+      "lng": 19.944,
+      "lengthM": 6,
+      "widthM": 2.3,
+      "status": "open"
+    },
+    {
+      "id": "bay2",
+      "name": "Plac Nowy 2",
+      "groupId": "group1",
+      "zoneId": "A",
+      "lat": 50.051649999999995,
+      "lng": 19.944,
+      "lengthM": 6,
+      "widthM": 2.3,
+      "status": "open"
+    },
+    {
+      "id": "bay3",
+      "name": "Plac Nowy 3",
+      "groupId": "group1",
+      "zoneId": "A",
+      "lat": 50.0518,
+      "lng": 19.944,
+      "lengthM": 6,
+      "widthM": 2.3,
+      "status": "open"
+    },
+    {
+      "id": "bay4",
+      "name": "Szewska 1",
+      "groupId": "group2",
+      "zoneId": "B",
+      "lat": 50.063,
+      "lng": 19.934,
+      "lengthM": 6,
+      "widthM": 2.3,
+      "status": "open"
+    },
+    {
+      "id": "bay5",
+      "name": "Szewska 2",
+      "groupId": "group2",
+      "zoneId": "B",
+      "lat": 50.06315,
+      "lng": 19.934,
+      "lengthM": 6,
+      "widthM": 2.3,
+      "status": "open"
+    },
+    {
+      "id": "bay6",
+      "name": "Szewska 3",
+      "groupId": "group2",
+      "zoneId": "B",
+      "lat": 50.063300000000005,
+      "lng": 19.934,
+      "lengthM": 6,
+      "widthM": 2.3,
+      "status": "open"
+    },
+    {
+      "id": "bay7",
+      "name": "Podzamcze 1",
+      "groupId": "group3",
+      "zoneId": "C",
+      "lat": 50.055,
+      "lng": 19.936,
+      "lengthM": 6,
+      "widthM": 2.3,
+      "status": "open"
+    },
+    {
+      "id": "bay8",
+      "name": "Podzamcze 2",
+      "groupId": "group3",
+      "zoneId": "C",
+      "lat": 50.05515,
+      "lng": 19.936,
+      "lengthM": 6,
+      "widthM": 2.3,
+      "status": "open"
+    }
+  ],
+  "groups": [
+    {
+      "id": "group1",
+      "bayIds": [
+        "bay1",
+        "bay2",
+        "bay3"
+      ]
+    },
+    {
+      "id": "group2",
+      "bayIds": [
+        "bay4",
+        "bay5",
+        "bay6"
+      ]
+    },
+    {
+      "id": "group3",
+      "bayIds": [
+        "bay7",
+        "bay8"
+      ]
+    }
+  ],
+  "schedules": [
+    {
+      "bayId": "bay1",
+      "day": "*",
+      "from": "00:00",
+      "to": "00:00",
+      "function": "deliveries"
+    },
+    {
+      "bayId": "bay2",
+      "day": "*",
+      "from": "00:00",
+      "to": "00:00",
+      "function": "deliveries"
+    },
+    {
+      "bayId": "bay3",
+      "day": "*",
+      "from": "00:00",
+      "to": "00:00",
+      "function": "deliveries"
+    },
+    {
+      "bayId": "bay4",
+      "day": "*",
+      "from": "00:00",
+      "to": "00:00",
+      "function": "deliveries"
+    },
+    {
+      "bayId": "bay5",
+      "day": "*",
+      "from": "00:00",
+      "to": "00:00",
+      "function": "deliveries"
+    },
+    {
+      "bayId": "bay6",
+      "day": "*",
+      "from": "00:00",
+      "to": "00:00",
+      "function": "deliveries"
+    },
+    {
+      "bayId": "bay7",
+      "day": "*",
+      "from": "00:00",
+      "to": "00:00",
+      "function": "deliveries"
+    },
+    {
+      "bayId": "bay8",
+      "day": "*",
+      "from": "00:00",
+      "to": "00:00",
+      "function": "deliveries"
+    }
+  ],
+  "businesses": [
+    {
+      "id": "business1",
+      "name": "Lokal demonstracyjny 1",
+      "entryPoint": {
+        "lat": 50.05155,
+        "lng": 19.94405
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business2",
+      "name": "Lokal demonstracyjny 2",
+      "entryPoint": {
+        "lat": 50.063050000000004,
+        "lng": 19.934050000000003
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business3",
+      "name": "Lokal demonstracyjny 3",
+      "entryPoint": {
+        "lat": 50.05505,
+        "lng": 19.93605
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business4",
+      "name": "Lokal demonstracyjny 4",
+      "entryPoint": {
+        "lat": 50.05155,
+        "lng": 19.94405
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business5",
+      "name": "Lokal demonstracyjny 5",
+      "entryPoint": {
+        "lat": 50.063050000000004,
+        "lng": 19.934050000000003
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business6",
+      "name": "Lokal demonstracyjny 6",
+      "entryPoint": {
+        "lat": 50.05505,
+        "lng": 19.93605
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business7",
+      "name": "Lokal demonstracyjny 7",
+      "entryPoint": {
+        "lat": 50.05155,
+        "lng": 19.94405
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business8",
+      "name": "Lokal demonstracyjny 8",
+      "entryPoint": {
+        "lat": 50.063050000000004,
+        "lng": 19.934050000000003
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business9",
+      "name": "Lokal demonstracyjny 9",
+      "entryPoint": {
+        "lat": 50.05505,
+        "lng": 19.93605
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business10",
+      "name": "Lokal demonstracyjny 10",
+      "entryPoint": {
+        "lat": 50.05155,
+        "lng": 19.94405
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business11",
+      "name": "Lokal demonstracyjny 11",
+      "entryPoint": {
+        "lat": 50.063050000000004,
+        "lng": 19.934050000000003
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business12",
+      "name": "Lokal demonstracyjny 12",
+      "entryPoint": {
+        "lat": 50.05505,
+        "lng": 19.93605
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business13",
+      "name": "Lokal demonstracyjny 13",
+      "entryPoint": {
+        "lat": 50.05155,
+        "lng": 19.94405
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business14",
+      "name": "Lokal demonstracyjny 14",
+      "entryPoint": {
+        "lat": 50.063050000000004,
+        "lng": 19.934050000000003
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business15",
+      "name": "Lokal demonstracyjny 15",
+      "entryPoint": {
+        "lat": 50.05505,
+        "lng": 19.93605
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business16",
+      "name": "Lokal demonstracyjny 16",
+      "entryPoint": {
+        "lat": 50.05155,
+        "lng": 19.94405
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business17",
+      "name": "Lokal demonstracyjny 17",
+      "entryPoint": {
+        "lat": 50.063050000000004,
+        "lng": 19.934050000000003
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business18",
+      "name": "Lokal demonstracyjny 18",
+      "entryPoint": {
+        "lat": 50.05505,
+        "lng": 19.93605
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business19",
+      "name": "Lokal demonstracyjny 19",
+      "entryPoint": {
+        "lat": 50.05155,
+        "lng": 19.94405
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business20",
+      "name": "Lokal demonstracyjny 20",
+      "entryPoint": {
+        "lat": 50.063050000000004,
+        "lng": 19.934050000000003
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business21",
+      "name": "Lokal demonstracyjny 21",
+      "entryPoint": {
+        "lat": 50.05505,
+        "lng": 19.93605
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business22",
+      "name": "Lokal demonstracyjny 22",
+      "entryPoint": {
+        "lat": 50.05155,
+        "lng": 19.94405
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business23",
+      "name": "Lokal demonstracyjny 23",
+      "entryPoint": {
+        "lat": 50.063050000000004,
+        "lng": 19.934050000000003
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business24",
+      "name": "Lokal demonstracyjny 24",
+      "entryPoint": {
+        "lat": 50.05505,
+        "lng": 19.93605
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org2",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    },
+    {
+      "id": "business25",
+      "name": "Lokal demonstracyjny 25",
+      "entryPoint": {
+        "lat": 50.05155,
+        "lng": 19.94405
+      },
+      "workingHours": [
+        {
+          "from": "07:00",
+          "to": "23:59"
+        }
+      ],
+      "hoursSourceOrgId": "org1",
+      "unloadingConditions": "Wejście od ulicy; odbiór przy drzwiach",
+      "unattendedDropAllowed": false
+    }
+  ],
+  "links": [
+    {
+      "businessId": "business1",
+      "bayId": "bay1",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay2",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay3",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay4",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay5",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay6",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay7",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay8",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay1",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay2",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay3",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay4",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay5",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay6",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay7",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay8",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay1",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay2",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay3",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay4",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay5",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay6",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay7",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay8",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay1",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay2",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay3",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay4",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay5",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay6",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay7",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay8",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay1",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay2",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay3",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay4",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay5",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay6",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay7",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay8",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay1",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay2",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay3",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay4",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay5",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay6",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay7",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay8",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay1",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay2",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay3",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay4",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay5",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay6",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay7",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay8",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay1",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay2",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay3",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay4",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay5",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay6",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay7",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay8",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay1",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay2",
+      "walkingM": 40,
+      "walkingMin": 1
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay3",
+      "walkingM": 40,
+      "walkingMin": 1
+    }
+  ],
+  "deliveries": [],
+  "routes": [],
+  "stops": [],
+  "reservations": [],
+  "external": [],
+  "rules": [],
+  "sensors": [
+    {
+      "bayId": "bay1",
+      "ts": 1791298800000,
+      "occupied": false,
+      "healthy": true
+    },
+    {
+      "bayId": "bay2",
+      "ts": 1791298800000,
+      "occupied": false,
+      "healthy": true
+    },
+    {
+      "bayId": "bay3",
+      "ts": 1791298800000,
+      "occupied": false,
+      "healthy": true
+    },
+    {
+      "bayId": "bay4",
+      "ts": 1791298800000,
+      "occupied": false,
+      "healthy": true
+    },
+    {
+      "bayId": "bay5",
+      "ts": 1791298800000,
+      "occupied": false,
+      "healthy": true
+    },
+    {
+      "bayId": "bay6",
+      "ts": 1791298800000,
+      "occupied": false,
+      "healthy": true
+    },
+    {
+      "bayId": "bay7",
+      "ts": 1791298800000,
+      "occupied": false,
+      "healthy": true
+    },
+    {
+      "bayId": "bay8",
+      "ts": 1791298800000,
+      "occupied": false,
+      "healthy": true
+    }
+  ],
+  "events": [],
+  "predictions": [],
+  "changes": [],
+  "incidents": [],
+  "history": [
+    {
+      "businessId": "business1",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": true
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": true
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": true
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": true
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": true
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": true
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": true
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business1",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business2",
+      "bayId": "bay5",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business3",
+      "bayId": "bay6",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business4",
+      "bayId": "bay7",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business5",
+      "bayId": "bay8",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business6",
+      "bayId": "bay1",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business7",
+      "bayId": "bay2",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business8",
+      "bayId": "bay3",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business9",
+      "bayId": "bay4",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business10",
+      "bayId": "bay5",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business11",
+      "bayId": "bay6",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business12",
+      "bayId": "bay7",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business13",
+      "bayId": "bay8",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": true
+    },
+    {
+      "businessId": "business14",
+      "bayId": "bay1",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business15",
+      "bayId": "bay2",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business16",
+      "bayId": "bay3",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business17",
+      "bayId": "bay4",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business18",
+      "bayId": "bay5",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business19",
+      "bayId": "bay6",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business20",
+      "bayId": "bay7",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    },
+    {
+      "businessId": "business21",
+      "bayId": "bay8",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 5,
+      "excluded": false
+    },
+    {
+      "businessId": "business22",
+      "bayId": "bay1",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 6,
+      "excluded": false
+    },
+    {
+      "businessId": "business23",
+      "bayId": "bay2",
+      "cargoType": "standard",
+      "quantity": 1,
+      "durationMin": 7,
+      "excluded": false
+    },
+    {
+      "businessId": "business24",
+      "bayId": "bay3",
+      "cargoType": "fresh",
+      "quantity": 1,
+      "durationMin": 8,
+      "excluded": false
+    },
+    {
+      "businessId": "business25",
+      "bayId": "bay4",
+      "cargoType": "cold",
+      "quantity": 1,
+      "durationMin": 9,
+      "excluded": false
+    }
+  ],
+  "usage": [],
+  "notifications": [],
+  "candidateSince": {},
+  "cutoffApplied": false
+}
