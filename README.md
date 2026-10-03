@@ -21,8 +21,6 @@ Tryb programistyczny z automatycznym odświeżaniem:
 npm.cmd run dev
 ```
 
-Frontend: http://localhost:5173, API: http://localhost:3001. Zatrzymaj wcześniej działający serwer, aby uniknąć zajętego portu.
-
 ## Pierwszy scenariusz
 
 1. Wybierz **Symulator**, kliknij **Przygotuj demo · 45 dostaw**. Tworzy 7 tras dla 45 dostaw; kurierzy pozostają zgodni z CSV. Jeśli demo jest już przygotowane, nie klikaj ponownie.
