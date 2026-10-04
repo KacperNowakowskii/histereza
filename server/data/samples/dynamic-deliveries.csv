@@ -1,0 +1,3 @@
+externalRef,businessName,date,cargoType,priority,courierId,registrationNumber,businessLat,businessLng,opens,closes,bayIds,vehicleModelId,fuelType,emissionStandard,productionYear,hasCooling,dimensionsVerified
+DYNAMIC-1,Piekarnia Nowy Poranek — nowy punkt CSV,2026-10-09,cold,1,courier3,KR NOW123,50.0516,19.9441,07:00,18:00,bay1|bay2,fleet-model:vehicle1:1,diesel,6,2023,true,true
+DYNAMIC-2,Piekarnia Nowy Poranek — nowy punkt CSV,2026-10-09,standard,1,courier3,KR NOW123,50.0516,19.9441,07:00,18:00,bay1|bay2,fleet-model:vehicle1:1,diesel,6,2023,true,true

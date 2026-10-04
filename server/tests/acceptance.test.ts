@@ -15,9 +15,9 @@ import { at } from '../src/sim/clock';
 import { createApp } from '../src/api/app';
 import { MINUTE,CONFIG } from '@histereza/shared/config';
 import type { Delivery,State,Stop,Reservation } from '@histereza/shared/types';
-const makeDelivery=(id:string,courierId='courier1',businessId='business1'):Delivery=>({id,externalRef:id,carrierOrgId:courierId==='courier4'?'org2':'org1',businessId,date:'2026-10-07',cargoType:'standard',quantity:1,priorityFlags:[],courierId,vehicleId:courierId==='courier4'?'vehicle4':'vehicle1',status:'imported'});
+const makeDelivery=(id:string,courierId='courier1',businessId='business1'):Delivery=>({id,externalRef:id,carrierOrgId:courierId==='courier4'?'org2':'org1',businessId,businessName:`Lokal demonstracyjny ${businessId.slice(8)}`,date:'2026-10-07',cargoType:'standard',priority:0,courierId,vehicleId:courierId==='courier4'?'vehicle4':'vehicle1',status:'imported'});
 function fixture() {
-  const s=seed();s.deliveries=[makeDelivery('d1'),makeDelivery('d2','courier4')];plan(s,s.planningDate);s.cutoffApplied=true;s.now=at(s.planningDate,'07:00');s.sensors.forEach(x=>x.ts=s.now);return s;
+  const s=seed();s.deliveries=[makeDelivery('d1'),makeDelivery('d2','courier4')];plan(s,s.planningDate);s.closedDeliveryDates=[s.planningDate];s.now=at(s.planningDate,'07:00');s.sensors.forEach(x=>x.ts=s.now);return s;
 }
 function setupConflict(driving=false) {
   const s=fixture();const a=s.stops[0],b=s.stops[1];const ra=s.reservations.find(r=>r.stopId===a.id)!,rb=s.reservations.find(r=>r.stopId===b.id)!;

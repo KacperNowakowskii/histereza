@@ -14,6 +14,5 @@ export function vehicleReason(s: State, v: Vehicle, ds: Delivery[] = []) {
   if (!s.bays.some(b => fits(m, b))) return 'Pojazd za duży dla wszystkich miejsc';
   if (vehicleSct(v, m, s.planningDate) === 'forbidden') return 'Zakaz SCT';
   if (ds.some(d => d.cargoType === 'cold') && !v.hasCooling) return 'Wymagana chłodnia';
-  if (ds.reduce((a, d) => a + d.quantity * 10, 0) > m.maxLoadKg) return 'Przekroczona ładowność (demo: 10 kg/jednostkę)';
   return undefined;
 }

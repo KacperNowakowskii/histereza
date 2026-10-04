@@ -1,0 +1,29 @@
+externalRef,businessId,businessName,date,cargoType,priority,courierId,vehicleId
+SAMPLE-2-1,business1,Restauracja Pod Lipą — Kazimierz,2026-10-09,standard,1,courier1,vehicle1
+SAMPLE-2-2,business2,Kawiarnia Ziarno — Kazimierz,2026-10-09,standard,0,courier2,vehicle2
+SAMPLE-2-3,business3,Piekarnia Poranna — Kazimierz,2026-10-09,standard,1,courier3,vehicle3
+SAMPLE-2-4,business4,Delikatesy Sąsiedzkie — Kazimierz,2026-10-09,standard,1,courier4,vehicle4
+SAMPLE-2-5,business5,Apteka Zielona — Kazimierz,2026-10-09,standard,1,courier5,vehicle5
+SAMPLE-2-6,business6,Hotel Nad Wisłą — Kazimierz,2026-10-09,fresh,2,courier1,vehicle1
+SAMPLE-2-7,business7,Sklep Papier i Pióro — Kazimierz,2026-10-09,fresh,0,courier2,vehicle2
+SAMPLE-2-8,business8,Pracownia Krawiecka — Kazimierz,2026-10-09,fresh,2,courier3,vehicle3
+SAMPLE-2-9,business9,Bistro Rynek — Kazimierz,2026-10-09,fresh,2,courier4,vehicle4
+SAMPLE-2-10,business1,Restauracja Pod Lipą — Kazimierz,2026-10-09,fresh,2,courier5,vehicle5
+SAMPLE-2-11,business2,Kawiarnia Ziarno — Kazimierz,2026-10-09,cold,3,courier1,vehicle1
+SAMPLE-2-12,business3,Piekarnia Poranna — Kazimierz,2026-10-09,standard,0,courier2,vehicle2
+SAMPLE-2-13,business4,Delikatesy Sąsiedzkie — Kazimierz,2026-10-09,standard,3,courier3,vehicle3
+SAMPLE-2-14,business5,Apteka Zielona — Kazimierz,2026-10-09,standard,3,courier4,vehicle4
+SAMPLE-2-15,business6,Hotel Nad Wisłą — Kazimierz,2026-10-09,standard,3,courier5,vehicle5
+SAMPLE-2-16,business7,Sklep Papier i Pióro — Kazimierz,2026-10-09,standard,0,courier1,vehicle1
+SAMPLE-2-17,business8,Pracownia Krawiecka — Kazimierz,2026-10-09,standard,0,courier2,vehicle2
+SAMPLE-2-18,business9,Bistro Rynek — Kazimierz,2026-10-09,standard,0,courier3,vehicle3
+SAMPLE-2-19,business1,Restauracja Pod Lipą — Kazimierz,2026-10-09,standard,0,courier4,vehicle4
+SAMPLE-2-20,business2,Kawiarnia Ziarno — Kazimierz,2026-10-09,standard,0,courier5,vehicle5
+SAMPLE-2-21,business3,Piekarnia Poranna — Kazimierz,2026-10-09,fresh,0,courier1,vehicle1
+SAMPLE-2-22,business4,Delikatesy Sąsiedzkie — Kazimierz,2026-10-09,fresh,0,courier2,vehicle2
+SAMPLE-2-23,business5,Apteka Zielona — Kazimierz,2026-10-09,fresh,0,courier3,vehicle3
+SAMPLE-2-24,business6,Hotel Nad Wisłą — Kazimierz,2026-10-09,fresh,0,courier4,vehicle4
+SAMPLE-2-25,business7,Sklep Papier i Pióro — Kazimierz,2026-10-09,fresh,0,courier5,vehicle5
+SAMPLE-2-26,business8,Pracownia Krawiecka — Kazimierz,2026-10-09,cold,0,courier1,vehicle1
+SAMPLE-2-27,business9,Bistro Rynek — Kazimierz,2026-10-09,standard,0,courier2,vehicle2
+SAMPLE-2-28,business1,Restauracja Pod Lipą — Kazimierz,2026-10-09,standard,0,courier3,vehicle3

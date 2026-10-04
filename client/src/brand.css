@@ -1,0 +1,43 @@
+/* Brand colours sampled from the supplied, unmodified SVG artwork. */
+:root {
+  --brand-primary: #0a0f47;
+  --brand-primary-hover: #202761;
+  --brand-primary-soft: var(--canvas);
+  --brand-accent: #eb493a;
+  --brand-accent-ink: #b52e23;
+  --brand-accent-soft: var(--canvas);
+  --canvas: #f4e9e1;
+  --surface: var(--canvas);
+  --surface-subtle: var(--canvas);
+  --ink: #20243b;
+  --ink-muted: #69616a;
+  --border: #d9ccc3;
+  --sidebar: var(--brand-primary);
+  --sidebar-text: #f4e9e1;
+  --sidebar-muted: #cbc3cd;
+  --sidebar-active: #252c62;
+  --success: #24734d;
+  --success-soft: var(--canvas);
+  --warning: #895414;
+  --warning-soft: var(--canvas);
+  --danger: #b3332a;
+  --danger-soft: var(--canvas);
+  --focus: var(--brand-accent);
+}
+
+/* Tailwind 4 configuration lives in CSS, rather than tailwind.config.js. */
+@theme inline {
+  --color-brand: var(--brand-primary);
+  --color-brand-hover: var(--brand-primary-hover);
+  --color-brand-soft: var(--brand-primary-soft);
+  --color-accent: var(--brand-accent);
+  --color-accent-soft: var(--brand-accent-soft);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+}

@@ -1,0 +1,5 @@
+{
+  "id": "quiet", "name": "Spokojny dzień — bez zaprogramowanych zakłóceń",
+  "startDate": "2026-10-07", "startTime": "07:00", "deliveriesPerCourier": 4,
+  "events": []
+}

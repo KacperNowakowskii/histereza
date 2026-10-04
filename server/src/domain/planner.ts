@@ -6,20 +6,22 @@ import { travelMin, distance } from './geo';
 import { at } from '../sim/clock';
 import { deliveryPriority } from './rules';
 import { fairOrder } from './allocation';
+import { priorityRank, assertPriorities, loadingGroups } from '@histereza/shared/priorities';
+import { stopPriority } from './priorityGroups';
 export function orderDeliveries(ds: Delivery[], state?:State) {
   const out:Delivery[]=[]; const remaining=[...ds];
   while(remaining.length) {
-    const ready=remaining.filter(d=>!d.mustFollowDeliveryId||out.some(p=>p.id===d.mustFollowDeliveryId));
-    if(!ready.length) throw new Error('Niewykonalna kolejność załadunku');
+    const firstRank = Math.min(...remaining.map(priorityRank));
+    const ready=remaining.filter(d => priorityRank(d) === firstRank);
     const rank=deliveryPriority;
     const origin=state?(out.length?state.businesses.find(b=>b.id===out[out.length-1].businessId)!.entryPoint:state.couriers.find(c=>c.id===ds[0].courierId)!.location):undefined;
     const near=(d:Delivery)=>state&&origin?distance(origin,state.businesses.find(b=>b.id===d.businessId)!.entryPoint):0;
     ready.sort((a,b)=>rank(b)-rank(a)||((a.workingHours?.[0].to??'23:59').localeCompare(b.workingHours?.[0].to??'23:59'))||near(a)-near(b)||a.id.localeCompare(b.id));
     out.push(ready[0]); remaining.splice(remaining.indexOf(ready[0]),1);
   }
-  // Lokalne usprawnienie dwóch sąsiednich punktów bez zmiany priorytetów i mustFollow.
+  // Lokalne usprawnienie może zmieniać kolejność wyłącznie wewnątrz grupy.
   if(state)for(let i=0;i<out.length-1;i++) {
-    const a=out[i],b=out[i+1];if(a.cargoType!==b.cargoType||b.mustFollowDeliveryId===a.id||a.mustFollowDeliveryId===b.id)continue;
+    const a=out[i],b=out[i+1];if(a.cargoType!==b.cargoType || priorityRank(a)!==priorityRank(b))continue;
     const point=(d:Delivery)=>state.businesses.find(x=>x.id===d.businessId)!.entryPoint;
     const prev=i?point(out[i-1]):state.couriers.find(c=>c.id===ds[0].courierId)!.location;const next=out[i+2];
     const old=distance(prev,point(a))+(next?distance(point(b),point(next)):0);const improved=distance(prev,point(b))+(next?distance(point(a),point(next)):0);
@@ -34,7 +36,7 @@ export function buildStops(s: State, route: Route, ds: Delivery[]) {
     const group=s.bays.find(b=>ids.includes(b.id))?.groupId; if(!group) throw new Error('Brak miejsca dla lokalu');
     const previous=out[out.length-1];
     const common=previous?.eligibleBayIds.filter(id=>ids.includes(id))??[];
-    if(previous&&previous.bayGroupId===group&&common.length) { previous.deliveryIds.push(d.id);previous.eligibleBayIds=common; }
+    if(previous&&previous.bayGroupId===group&&common.length&&priorityRank(ds.find(x=>x.id===previous.deliveryIds[0])!)===priorityRank(d)) { previous.deliveryIds.push(d.id);previous.eligibleBayIds=common; }
     else out.push({id:`${route.id}:stop${out.length+1}`,routeId:route.id,sequence:out.length,bayGroupId:group,bayId:ids[0],deliveryIds:[d.id],plannedArrival:0,plannedServiceMin:0,frozen:false,status:'pending',eligibleBayIds:ids});
   }
   for(const stop of out) stop.plannedServiceMin=stop.deliveryIds.reduce((total,id)=>{ const d=ds.find(d=>d.id===id)!;return total+estimate(s.history,d.businessId,stop.bayId,d.cargoType);},0)+1;
@@ -42,12 +44,15 @@ export function buildStops(s: State, route: Route, ds: Delivery[]) {
 }
 // Une demande par organisation à chaque tour; aucun poids de paiement ou de taille.
 function planDraft(s: State, date: string) {
+  assertPriorities(s.deliveries.filter(d=>d.date===date));
   if(s.routes.some(r=>r.date===date)) throw new Error('Ce jour possède déjà un plan');
   const ready=new Map<string,number>();
   for(const c of s.couriers) {
     const ds=s.deliveries.filter(d=>d.courierId===c.id&&d.date===date&&d.status==='imported'); if(!ds.length) continue;
-    const route:Route={id:`route:${date}:${c.id}`,courierId:c.id,vehicleId:ds[0].vehicleId,date,stopIds:[],breaks:[],loadingList:[]};
-    s.routes.push(route);const stops=buildStops(s,route,ds);s.stops.push(...stops);route.stopIds=stops.map(st=>st.id);route.loadingList=stops.flatMap(st=>st.deliveryIds).reverse();
+    if(ds.some(d=>d.vehicleId!==ds[0].vehicleId))throw new Error('Kurier ma różne pojazdy w jednym dniu');
+    const route:Route={id:`route:${date}:${c.id}`,courierId:c.id,vehicleId:ds[0].vehicleId,date,stopIds:[],breaks:[],loadingList:[],priorityGroupsApplied:true};
+    s.routes.push(route);const stops=buildStops(s,route,ds);s.stops.push(...stops);route.stopIds=stops.map(st=>st.id);
+    const loading=loadingGroups(ds);route.loadingMode=loading.mode;route.loadingGroups=loading.groups;route.loadingList=loading.groups.flatMap(g=>g.deliveryIds);
     c.vehicleId=route.vehicleId;ready.set(c.id,at(date,'07:00'));
     for(let i=3;i<stops.length;i+=3) route.breaks.push({afterStopId:stops[i-1].id,minutes:15});
   }
@@ -58,8 +63,17 @@ function planDraft(s: State, date: string) {
     const breakMin=prev?route.breaks.find(b=>b.afterStopId===prev.id)?.minutes??0:0;
     const origin=prev?s.bays.find(b=>b.id===prev.bayId)!:c.location;const bay=s.bays.find(b=>b.id===stop.bayId)!;
     const earliest=(ready.get(c.id)??at(date,'07:00'))+(travelMin(origin,bay)+breakMin)*MINUTE;
+    if(s.stops.some(st=>st.routeId===route.id&&st.sequence<stop.sequence&&st.status==='waiting'&&stopPriority(s,st)<stopPriority(s,stop))) {
+      stop.status='waiting';stop.plannedArrival=earliest;
+      s.reservations.push({id:`res:${stop.id}`,bayId:stop.bayId,stopId:stop.id,deliveryIds:stop.deliveryIds,vehicleId:route.vehicleId,start:earliest,end:earliest+stop.plannedServiceMin*MINUTE,status:'suspended',version:1});
+      continue;
+    }
     const slot=findSlot(s,stop,earliest);
-    if(!slot) {stop.status='waiting';continue;}
+    if(!slot) {
+      stop.status='waiting';stop.plannedArrival=earliest;
+      s.reservations.push({id:`res:${stop.id}`,bayId:stop.bayId,stopId:stop.id,deliveryIds:stop.deliveryIds,vehicleId:route.vehicleId,start:earliest,end:earliest+stop.plannedServiceMin*MINUTE,status:'suspended',version:1});
+      continue;
+    }
     stop.bayId=slot.bayId;stop.plannedArrival=slot.start;ready.set(c.id,slot.end);
     s.reservations.push({id:`res:${stop.id}`,bayId:slot.bayId,stopId:stop.id,deliveryIds:stop.deliveryIds,vehicleId:route.vehicleId,start:slot.start,end:slot.end,status:'confirmed',version:1});
     s.usage.push({orgId:c.orgId,reservationId:`res:${stop.id}`,units:1});

@@ -1,0 +1,11 @@
+{
+  "id": "morning", "name": "Poranek: korek, zajęte miejsce i tankowanie",
+  "startDate": "2026-10-07", "startTime": "07:00", "deliveriesPerCourier": 4,
+  "positions": { "courier1": { "lat": 50.054, "lng": 19.944 } },
+  "events": [
+    { "minute": 3, "kind": "traffic", "duration": 8 },
+    { "minute": 18, "kind": "overstay", "duration": 12 },
+    { "minute": 40, "kind": "occupied", "duration": 7 },
+    { "minute": 65, "kind": "fuel", "duration": 10 }
+  ]
+}

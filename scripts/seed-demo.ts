@@ -1,0 +1,13 @@
+import { writeFileSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { openDb } from '../server/src/db/db';
+import { Repo } from '../server/src/db/repo';
+import { demoSeed } from '../server/src/db/demoSeed';
+const memory=openDb(':memory:');
+const fixture=new Repo(memory,demoSeed),s=fixture.read();memory.close();
+const db=openDb();
+const backup=`${db.name}.before-expanded-demo.sqlite`;
+if(db.prepare('SELECT id FROM state WHERE id=1').get()&&!existsSync(backup))db.prepare('VACUUM INTO ?').run(backup);
+const repo=new Repo(db,demoSeed);repo.save(s);
+writeFileSync(fileURLToPath(new URL('../server/data/seed/reference.json',import.meta.url)),JSON.stringify(s,null,2)+'\n');
+console.log(JSON.stringify({backup,companies:s.organizations.length,couriers:s.couriers.length,vehicles:s.vehicles.length,businesses:s.businesses.length,bays:s.bays.length,deliveries:s.deliveries.length,history:s.history.length,statuses:s.couriers.reduce((out,c)=>({...out,[c.status]:(out[c.status]??0)+1}),{} as Record<string,number>),dates:s.deliveries.reduce((out,d)=>({...out,[d.date]:(out[d.date]??0)+1}),{} as Record<string,number>),foreignKeys:db.pragma('foreign_key_check'),integrity:db.pragma('integrity_check')},null,2));db.close();

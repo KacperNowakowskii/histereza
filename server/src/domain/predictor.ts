@@ -1,6 +1,7 @@
 import type { State, Prediction } from '@histereza/shared/types';
 import { CONFIG, MINUTE } from '@histereza/shared/config';
 import { legal } from './calendar';
+import { availableAt } from './courierAvailability';
 import { travelMin } from './geo';
 export function predict(s: State): Prediction[] {
   const out:Prediction[]=[];
@@ -10,7 +11,7 @@ export function predict(s: State): Prediction[] {
     const bay=s.bays.find(x=>x.id===r.bayId)!;
     const preceding=s.stops.filter(x=>x.routeId===st.routeId&&x.sequence<st.sequence&&x.status!=='done');
     const ownBusy=preceding.reduce((end,x)=>Math.max(end,(x.expectedDeparture??x.plannedArrival+x.plannedServiceMin*MINUTE)),0);
-    const arrival=Math.max(s.now,c.readyAt,ownBusy)+travelMin(c.location,bay)*MINUTE;
+    const arrival=Math.max(s.now,availableAt(s,c,st),ownBusy)+travelMin(c.location,bay)*MINUTE;
     const busy=s.stops.find(x=>x.bayId===r.bayId&&x.id!==st.id&&x.status==='servicing'&&(x.expectedDeparture??r.start)>r.start-CONFIG.BUFFER_MIN*MINUTE);
     const sensor=s.sensors.find(x=>x.bayId===r.bayId)!;
     let type='';let minutes=0;

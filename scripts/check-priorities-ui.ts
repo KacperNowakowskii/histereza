@@ -1,0 +1,54 @@
+import { chromium, expect } from '@playwright/test';
+import assert from 'node:assert/strict';
+import { Repo } from '../server/src/db/repo';
+import { openDb } from '../server/src/db/db';
+import { seed } from '../server/src/db/seed';
+import { createApp } from '../server/src/api/app';
+const db = openDb(':memory:'); const repo = new Repo(db, seed);
+const server = createApp(repo).listen(0, '127.0.0.1');
+await new Promise<void>(resolve => server.once('listening', resolve));
+const base = `http://127.0.0.1:${(server.address() as { port: number }).port}`;
+let browser: Awaited<ReturnType<typeof chromium.launch>> | undefined;
+try {
+  browser = await chromium.launch({ channel: 'msedge', headless: true });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  const errors: string[] = []; page.on('pageerror', e => errors.push(e.message)); page.on('dialog', d => void d.accept());
+  await page.goto(`${base}/dispatcher`); await page.locator(".delivery-days button").filter({ hasText: "2026-10-07" }).click(); await expect(page.getByRole('heading', { name: 'Dodawanie dostaw', exact: true })).toBeVisible();
+  const priority = page.getByLabel('Priorytet', { exact: true });
+  const fill = async (ref: string) => {
+    await page.getByLabel('Numer dostawy', { exact: true }).fill(ref);
+    await page.getByLabel('Przypisany kurier', { exact: true }).selectOption('courier1');
+    await page.getByLabel('Wybrany biznes', { exact: true }).selectOption('business1');
+    await page.getByLabel('Wybrany pojazd', { exact: true }).selectOption('vehicle1');
+  };
+  await fill('ONE'); await expect(priority.locator('option[value="0"]')).toHaveText('Brak priorytetu'); await expect(priority.locator('option[value="2"]')).toHaveCount(0);
+  await priority.selectOption('1'); await page.getByRole('button', { name: 'Dodaj dostawę', exact: true }).click();
+  const one = page.getByRole('row').filter({ hasText: 'org1:ONE' }); await expect(one).toHaveCount(1);
+  await fill('TWO'); await expect(priority.locator('option[value="2"]')).not.toHaveAttribute('disabled', ''); await expect(priority.locator('option[value="3"]')).toHaveCount(0);
+  await priority.selectOption('2'); await page.getByRole('button', { name: 'Dodaj dostawę', exact: true }).click();
+  const two = page.getByRole('row').filter({ hasText: 'org1:TWO' }); await expect(two).toHaveCount(1);
+  await expect(one.getByRole('button', { name: 'Usuń', exact: true })).toBeDisabled();
+  await one.getByRole('button', { name: 'Edytuj', exact: true }).click(); await expect(priority.locator('option[value="0"]')).toHaveAttribute('disabled', ''); await expect(priority.locator('option[value="2"]')).toHaveAttribute('disabled', '');
+  await expect(priority.locator('option[value="1"]')).not.toHaveAttribute('disabled', ''); await page.getByRole('button', { name: 'Anuluj edycję', exact: true }).click();
+  await fill('THREE'); await expect(priority.locator('option[value="3"]')).not.toHaveAttribute('disabled', ''); await priority.selectOption('3'); await page.getByRole('button', { name: 'Dodaj dostawę', exact: true }).click();
+  const three = page.getByRole('row').filter({ hasText: 'org1:THREE' }); await expect(three).toHaveCount(1);
+  await expect(two.getByRole('button', { name: 'Usuń', exact: true })).toBeDisabled();
+  await fill('TWIN'); await priority.selectOption('2'); await page.getByRole('button', { name: 'Dodaj dostawę', exact: true }).click();
+  await expect(two.getByRole('button', { name: 'Usuń', exact: true })).toBeEnabled();
+  await two.getByRole('button', { name: 'Usuń', exact: true }).click();
+  const anotherTwo = page.getByRole('row').filter({ hasText: 'org1:TWIN' }); await expect(anotherTwo.getByRole('button', { name: 'Usuń', exact: true })).toBeDisabled();
+  await fill('DATE'); await page.getByLabel('Data dostawy', { exact: true }).fill('2026-10-08'); await expect(priority.locator('option[value="2"]')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Import CSV', exact: true }).click();
+  await page.getByLabel('Treść CSV', { exact: true }).fill('externalRef,date,cargoType,courierId,vehicleId,businessId,priority\r\nBAD,2026-10-07,standard,courier1,vehicle1,business1,5');
+  await page.getByRole('button', { name: 'Sprawdź wiersze', exact: true }).click(); await expect(page.locator('.validation')).toContainText('Wiersz 2: Brakuje priorytetu 4'); await expect(page.getByRole('button', { name: 'Importuj zweryfikowane dostawy', exact: true })).toBeDisabled();
+  assert.equal(repo.read().closedDeliveryDates.includes("2026-10-07"), false); assert.deepEqual(repo.read().routes, []);
+  // Przesuwamy zegar testowy; plan zamyka się automatycznie.
+  const response = await page.request.post(`${base}/api/operator/day`, { headers: { 'x-role': 'operator' } }); assert.equal(response.status(), 200);
+  await page.reload(); await page.getByText('Lista załadunku · courier1', { exact: true }).click();
+  await expect(page.getByText('Ładowanie 1: priorytet 3', { exact: true })).toBeVisible();
+  await expect(page.getByText('Ładowanie 2: priorytet 2', { exact: true })).toBeVisible();
+  await expect(page.getByText('Ładowanie 3: priorytet 1', { exact: true })).toBeVisible();
+  await expect(page.getByText('W obrębie każdej grupy ułożenie paczek jest dowolne.', { exact: false })).toBeVisible();
+  assert.deepEqual(errors, []);
+  console.log('PRIORITY UI OK: brak/1/2/3, brak luk, blokady edycji i usuwania, powtarzalne grupy, zakres daty, błędy CSV i załadunek 3→2→1.');
+} finally { await browser?.close(); await new Promise<void>(resolve => server.close(() => resolve())); db.close(); }

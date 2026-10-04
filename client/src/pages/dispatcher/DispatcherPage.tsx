@@ -1,11 +1,26 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { RouteLoading } from '../../components/RouteLoading';
 import type { AppContext } from '../../App';
-import { CONFIG, MINUTE } from '@histereza/shared/config';
-import { REASONS } from '@histereza/shared/reasons';
+import { CONFIG } from '@histereza/shared/config';
+import { declarationsClosed, deliveryDays, systemDay } from '@histereza/shared/deliveryDates';
 import { MapView } from '../../components/MapView';
-import { NotificationList } from '../../components/NotificationList';
-import { fmt } from '../../components/format';
-export function DispatcherPage({ctx}:{ctx:AppContext}){const {s,role,error,message,busy,orgId,courierId,businessId,bayId,csv,validation,validatedCsv,vehicleId,reason,plate,parkingId,reports,location,navigate,choose,request,c,route,stop,bay,path,publicBay,pb,nextRes,until,screen,action,table,setError,setMessage,setOrgId,setCourierId,setBusinessId,setBayId,setCsv,setValidation,setValidatedCsv,setVehicleId,setReason,setPlate,setParkingId,setReports}=ctx;return <>
-    {(role==='dispatcher'||role==='independent'&&!path.includes('next'))&&<><div className="panel"><div className="panel-title"><h2>Import dostaw</h2><select value={orgId} onChange={e=>{setOrgId(e.target.value);setValidation(undefined);setValidatedCsv('');}}>{s.organizations.filter(o=>role==='dispatcher'?o.type==='carrier':o.type==='independent').map(o=><option key={o.id} value={o.id}>{o.name}</option>)}</select></div><p>CSV zawiera przypisanych kurierów i pojazdy oraz godziny pracy lokali. System nie zmienia przypisań.</p><div className="actions"><a className="button secondary" href={`/api/samples/deliveries?orgId=${orgId}`}>Pobierz poprawny CSV</a><a className="button secondary" href={`/api/samples/errors?orgId=${orgId}`}>CSV z błędami</a><label className="button secondary">Wczytaj plik<input type="file" accept=".csv,text/csv" hidden onChange={async e=>{const f=e.target.files?.[0];if(f){setCsv(await f.text());setValidation(undefined);}}}/></label></div><label>Treść CSV<textarea value={csv} onChange={e=>{setCsv(e.target.value);setValidation(undefined);}} placeholder="externalRef,businessId,date,cargoType,quantity,courierId,vehicleId,mustFollow,opens,closes" rows={5}/></label><div className="actions"><button disabled={busy||!csv} onClick={async()=>{const data=await request('/deliveries/import',{csv,orgId,commit:false});if(data){setValidation(data);setValidatedCsv(csv);}}}>Sprawdź wiersze</button><button disabled={busy||!validation||validation.errors.length>0||validatedCsv!==csv} onClick={async()=>{const data=await request('/deliveries/import',{csv,orgId,commit:true});if(data&&!data.errors.length){setCsv('');setValidation(undefined);}}}>Importuj zweryfikowane dostawy</button></div>{validation&&<div className="validation">{validation.errors.length?validation.errors.map((e,i)=><p key={i}>Wiersz {e.row}: {e.message}</p>):<p>✓ {validation.deliveries.length} poprawnych dostaw. Kurierzy zostaną zachowani.</p>}</div>}</div><div className="panel"><div className="panel-title"><h2>Wspólna alokacja · D-1 18:00</h2><button disabled={busy||!s.deliveries.length||s.cutoffApplied} onClick={()=>request('/planning/cutoff')}>Uruchom cut-off</button></div><p>Wspólne sloty z buforem {CONFIG.BUFFER_MIN} min. Bez ręcznej edycji planu.</p>{table(s.stops.filter(st=>s.routes.find(r=>r.id===st.routeId)&&s.couriers.find(c=>c.id===s.routes.find(r=>r.id===st.routeId)!.courierId)?.orgId===orgId))}{s.routes.filter(r=>s.couriers.find(c=>c.id===r.courierId)?.orgId===orgId).map(r=><details key={r.id}><summary>Lista załadunku · {r.courierId}</summary><ol>{r.loadingList.map(id=><li key={id}>{s.deliveries.find(d=>d.id===id)?.externalRef} — {s.businesses.find(b=>b.id===s.deliveries.find(d=>d.id===id)?.businessId)?.name}</li>)}</ol><p>Ładuj w tej kolejności; pierwszy cel ma być dostępny od drzwi.</p></details>)}</div><MapView s={s}/></>}
-
-</>; }
+import { DeliveryWorkspace } from './DeliveryWorkspace';
+export function DispatcherPage({ ctx }: { ctx: AppContext }) {
+  const { s, orgId, setOrgId, table } = ctx;
+  const today = systemDay(s.now), days = deliveryDays(s.now);
+  const [selectedDate, setSelectedDate] = useState(today); const previousDay = useRef(today);
+  useEffect(() => {
+    const old = previousDay.current; previousDay.current = today;
+    setSelectedDate(date => date === old || !days.some(d => d.date === date) ? today : date);
+  }, [today]);
+  if (ctx.role !== 'dispatcher') return null;
+  const routes = s.routes.filter(r => r.date === selectedDate && s.couriers.find(c => c.id === r.courierId)?.orgId === orgId);
+  const closed = declarationsClosed(s.now, selectedDate, s.closedDeliveryDates);
+  return <>
+    <div className="panel catalog-company"><label>Firma kurierska<select aria-label="Firma kurierska" value={orgId} onChange={e => { setOrgId(e.target.value); ctx.setError(''); ctx.setMessage(''); }}>{s.organizations.map(o => <option key={o.id} value={o.id}>{o.name}</option>)}</select></label></div>
+    <div className="panel"><h2>Dostawy według dni</h2><nav className="delivery-days" aria-label="Dni dostaw">{days.map(({ date, offset }) => <button key={date} type="button" aria-pressed={selectedDate === date} className={selectedDate === date ? '' : 'secondary'} onClick={() => setSelectedDate(date)}><strong>{offset === 0 ? 'Dzisiaj' : offset < 0 ? -offset + (offset === -1 ? ' dzień temu' : ' dni temu') : 'Za ' + offset + (offset === 1 ? ' dzień' : ' dni')}</strong><span>{date}</span><small>{s.deliveries.filter(d => d.carrierOrgId === orgId && d.date === date).length} dostaw · {offset <= 0 ? 'podgląd' : 'deklaracje'}</small></button>)}</nav></div>
+    <DeliveryWorkspace key={orgId+':'+selectedDate} ctx={ctx} selectedDate={selectedDate} />
+    <div className="panel"><h2>{closed ? 'Zatwierdzony plan · '+selectedDate : 'Deklaracje · '+selectedDate}</h2>{closed ? <><p>Lista została zamknięta automatycznie o 00:00. Wspólne sloty z buforem {CONFIG.BUFFER_MIN} min.</p>{table(s.stops.filter(st => routes.some(r => r.id === st.routeId)))}{routes.map(r => <RouteLoading key={r.id} route={r} s={s} />)}</> : <p>Ostateczne trasy powstaną automatycznie o 00:00 rozpoczynającym {selectedDate}. Do tego czasu możesz deklarować, edytować i usuwać dostawy.</p>}</div>
+    <MapView s={s} />
+  </>;
+}

@@ -25,29 +25,28 @@ Frontend: http://localhost:5173, API: http://localhost:3001. Zatrzymaj wcześnie
 
 ## Pierwszy scenariusz
 
-1. Wybierz **Symulator**, kliknij **Przygotuj demo · 45 dostaw**. Tworzy 7 tras dla 45 dostaw; kurierzy pozostają zgodni z CSV. Jeśli demo jest już przygotowane, nie klikaj ponownie.
-2. Przełącz na **Kurier firmowy**, wybierz kuriera, potwierdź pojazd, załadunek, wyjazd, następnie **Jadę**. Lokal jest od tej chwili zamrożony.
-3. W **Symulatorze** ustaw czas na początek slotu przyciskiem `+1 min`/`+5 min`. Wybierz tego samego kuriera i jego miejsce, kliknij **Kurier przy miejscu · zajęte**.
-4. W panelu kuriera kliknij **Jestem na miejscu**, następnie po rozładunku **Potwierdzam doręczenia**.
-5. W symulatorze ustaw **Kurier wyjechał · wolne**, a następnie u kuriera **Wyjeżdżam z miejsca**. Wróci brama decyzyjna.
-6. Sprawdź zakłócenia: opóźnienie, przedłużony rozładunek (kurier musi już obsługiwać postój), obcy pojazd, zamknięcie miejsca, offline i awaria czujnika. Predykcja działa w każdym ticku; standardowe naprawy czekają 3 min, wymuszone reagują od razu.
+1. Otwórz **Symulator** i wybierz firmę oraz jej kuriera.
+2. Wybierz gotowy scenariusz albo losową symulację i kliknij **Przygotuj sesję**.
+3. Kliknij **Uruchom symulację**. Pozycja i obsługa punktów zmieniają się według własnego zegara sesji.
+4. Mapa, plan, oś czasu i log pokazują wyłącznie wybranego kuriera. Zdarzenia pokazują konflikt, propozycję i zastosowaną naprawę.
+5. **Zatrzymaj symulację**, **Reset symulatora** i **Nowa sesja** dotyczą tylko demonstracji.
 
-Zegar jest ręcznym zegarem symulacji. Polling co 2 s pobiera stan, ale nie przesuwa czasu. W każdej chwili **Reset demo** usuwa demonstracyjne dane po potwierdzeniu.
+Dane Symulatora są w pamięci serwera, bez dostępu do SQLite głównej aplikacji. Zmiana zakładki zatrzymuje sesję. Restart serwera usuwa sesje demonstracyjne, zachowując główną bazę. Szczegóły scenariuszy i konfiguracji: [docs/SIMULATOR.md](docs/SIMULATOR.md).
 
 ## Import własnego CSV
 
-Panel firmy → wybierz firmę → pobierz przykładowy CSV → wczytaj go → **Sprawdź wiersze** → **Importuj zweryfikowane dostawy**. Powtórz dla pozostałych firm przed cut-off. Dopiero potem **Uruchom cut-off**. Przycisk symuluje moment D-1 18:00 i przeprowadza wspólną alokację; kolejność importów nie nadaje pierwszeństwa.
+Panel firmy → wybierz firmę i przyszły dzień → pobierz przykładowy CSV → wczytaj go → **Sprawdź wiersze** → **Importuj zweryfikowane dostawy**. Deklaracje można zmieniać do końca poprzedniego dnia. Zegar systemowy/symulowany automatycznie zamyka dzień o 00:00 i generuje trasy dla kurierów; kolejność importów nie nadaje pierwszeństwa. Nawigacja pokazuje dwa poprzednie dni, dzisiaj i trzy kolejne dni. Historia i dzień bieżący są tylko do podglądu.
 
 Wymagane kolumny:
 
 ```csv
-externalRef,businessId,date,cargoType,quantity,courierId,vehicleId,mustFollow,opens,closes
-D1,business1,2026-10-07,standard,1,courier1,vehicle1,,07:00,23:59
+externalRef,businessId,businessName,date,cargoType,priority,courierId,vehicleId,opens,closes
+D1,business1,Lokal demonstracyjny 1,2026-10-07,standard,0,courier1,vehicle1,07:00,23:59
 ```
 
-`cargoType`: `standard`, `fresh`, `cold`. `mustFollow` jest numerem `externalRef` wcześniejszej dostawy tego samego kuriera i dnia. Kurier oraz pojazd muszą należeć do wskazanej firmy. Każdy kurier używa jednego pojazdu w danym dniu. Godziny pracy są danymi firmy, zapisanymi także przy konkretnej dostawie, dzięki czemu dwie firmy nie nadpisują wzajemnie swoich ograniczeń. MVP przyjmuje 10 kg na jednostkę ilości do walidacji ładowności.
+`cargoType`: `standard`, `fresh`, `cold`. `businessId` wskazuje istniejący biznes, a `businessName` odpowiada jego nazwie. `vehicleId` wskazuje istniejący pojazd floty. Kurier oraz pojazd muszą należeć do wskazanej firmy. Każdy kurier używa jednego pojazdu w danym dniu. Godziny pracy są danymi firmy, zapisanymi także przy konkretnej dostawie, dzięki czemu dwie firmy nie nadpisują wzajemnie swoich ograniczeń. `priority` może być puste (brak priorytetu) lub wskazywać grupę 1, 2, 3… . Grupy muszą być ciągłe dla kuriera, pojazdu i daty; kilka dostaw może mieć ten sam numer. Niższe grupy realizujemy wcześniej, a dostawy bez priorytetu po grupach numerowanych. W grupie pozostaje dotychczasowa optymalizacja. Załadunek grup jest odwrotny do realizacji, a ułożenie paczek wewnątrz grupy dowolne. Jedna grupa lub brak priorytetów oznacza swobodny dostęp.
 
-Kurier samodzielny ma osobne widoki **Moje dostawy** i **Ekran kuriera**. Odbiorca ma wyłącznie podgląd dostaw i powiadomień.
+System obsługuje kurierów firmowych. Odbiorca ma wyłącznie podgląd dostaw i powiadomień.
 
 ## Testy
 
@@ -66,7 +65,7 @@ npm.cmd run test:smoke
 npm.cmd run test:browser
 ```
 
-**Uwaga: oba testy integracyjne resetują lokalne dane demo.** Test przeglądarkowy wymaga Microsoft Edge. Sprawdza ekrany na komputerze i przy szerokości 390 px; zapisuje PNG do `docs/screenshots/`. Nie wymaga pobierania osobnej przeglądarki.
+Oba testy integracyjne korzystają z izolowanego Symulatora i nie resetują głównej bazy. Test przeglądarkowy wymaga Microsoft Edge, sprawdza ekran na komputerze i przy szerokości 390 px.
 
 ## Struktura i trwałość
 
@@ -76,8 +75,8 @@ npm.cmd run test:browser
 - `server/src/db`: schema, transakcje `BEGIN IMMEDIATE`, repozytorium, generator deterministycznego seedu.
 - `server/src/sim`: jedyne źródło czasu i scenariusze.
 - `client/src/pages`: ekrany firmy, kuriera, biznesu, kierowcy QR i operatora/symulatora.
-- `server/data/demo.sqlite`: baza tworzona przy pierwszym starcie, ignorowana przez Git. Encje przechowuje dokument stanu, a kalendarz rezerwacji dodatkowo tabela z triggerami blokującymi kolizje i bufor.
-- `server/data/seed/reference.json`, `server/data/samples/*.csv`: automatycznie generowane fikcyjne dane (8 miejsc, 25 lokali, 7 kurierów, 9 pojazdów, 300 historycznych postojów).
+- `server/data/demo.sqlite`: baza tworzona przy pierwszym starcie, ignorowana przez Git. Encje przechowuje dokument stanu, kalendarz rezerwacji tabela z triggerami blokującymi kolizje i bufor, a dostawy osobna tabela z kluczami obcymi do biznesów, floty i kurierów. Zapis tych danych odbywa się w jednej transakcji.
+- `server/data/seed/reference.json`, `server/data/samples/*.csv`: automatycznie generowane fikcyjne dane (5 firm, 18 kurierów, 24 pojazdy, 45 biznesów, 14 miejsc, 198 dostaw i 500 historycznych postojów). Seed od zera, daty i przypadki demonstracyjne: [docs/DEMO-DATA.md](docs/DEMO-DATA.md).
 
 ## Granice MVP
 
@@ -86,3 +85,9 @@ System jest lokalnym demonstratorem zgodnie ze specyfikacją. Przełącznik ról
 GPS, czujniki, SMS, ruch i płatności są symulowane; powiadomienia są zapisywane w systemie. QR prowadzi do lokalnego adresu — telefon nie uzyska do niego dostępu przez własne `localhost`. Mapy korzystają z kafelków OpenStreetMap i wymagają internetu; pozostałe dane i logika działają lokalnie. Hub rowerowy oraz tryb pozagodzinny są odroczone jako SHOULD. Reguły SCT są demonstracyjnymi regułami ze specyfikacji.
 
 Decyzje i rozstrzygnięcia sprzeczności: [docs/DECISIONS.md](docs/DECISIONS.md). Szczegółowa weryfikacja: [docs/VERIFICATION.md](docs/VERIFICATION.md).
+
+Przy otwarciu starszej bazy aktualna migracja wykonuje kopię `server/data/demo.sqlite.pre-model-v5.sqlite`. Bazy sprzed wersji 2 przechodzą także migrację dostaw: usunięcie dawnych uczestników spoza firm, uzupełnienie nazwy biznesu i nadanie starszym dostawom priorytetu `0`. Wersja 3 przypisuje istniejące biznesy do firmy zapisanej jako źródło godzin; przy braku takiej firmy używa pierwszej istniejącej firmy. Wersja 4 usuwa dawne pola i zamienia starsze numery z lukami na ciąg 1…N w obrębie kuriera, pojazdu i daty. Wersja 5 zamyka dni osobno o 00:00, zachowuje bieżące i historyczne trasy oraz przywraca przedwcześnie zaplanowane przyszłe dostawy do deklaracji. Migracja nie resetuje bazy; przypisania kurierów pozostają bez zmian.
+
+Panel firmy ma zakładki **Dostawy**, **Biznesy** i **Flota**. Biznesy i pojazdy można dodawać, edytować i usuwać w obrębie wybranej firmy. Wyszukiwanie biznesu po ID lub pełnej nazwie uzupełnia formularz; przy kilku jednakowych nazwach trzeba wskazać konkretny rekord. Flota przechowuje model, wymiary, ładowność, DMC, paliwo, normę Euro, rok produkcji, chłodnię i potwierdzenie wymiarów. Usunięcie rekordów wykorzystywanych przez dostawy jest blokowane. Parametry wpływające na aktywny plan można zmienić po zakończeniu dostaw.
+
+Zakładka Dostawy oferuje równorzędny **Import CSV** i **Dodaj ręcznie**, tworzenie biznesów i pojazdów w trakcie dodawania dostawy oraz listę z edycją i usuwaniem przygotowanych rekordów. Import jest atomowy: błędny wiersz blokuje także zapis nowych katalogów. Planner respektuje grupy priorytetowe; cut-off działa automatycznie o 00:00; kurier widzi własną trasę i może zgłaszać problemy oraz planować przerwy. Szczegóły kolumn CSV, przykładów i ograniczeń edycji: [docs/DELIVERY-ENTRY.md](docs/DELIVERY-ENTRY.md).

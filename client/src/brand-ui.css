@@ -1,0 +1,65 @@
+.brand-logo { display: block; width: 100%; height: auto; object-fit: contain; }
+.brand { display: block; padding: 12px 10px; background: var(--surface); border-radius: 10px; }
+.brand span { color: var(--ink-muted); font-size: 8px; letter-spacing: 1.3px; text-align: center; }
+.header-brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.header-brand > .brand-logo { width: 42px; flex-shrink: 0; }
+.hero-logo { width: 160px; max-width: 100%; margin-bottom: 24px; }
+.loading-logo { width: 260px; max-width: 100%; margin-bottom: 28px; }
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand .brand-logo { width: 90px; }
+
+/* Visual refinements only; existing grids, controls and interactions remain. */
+button, .button { box-shadow: 0 1px 2px color-mix(in srgb, var(--brand-primary) 10%, transparent); }
+button.secondary, .button.secondary { box-shadow: none; }
+.danger:hover { background: var(--danger-soft); color: var(--danger); }
+a { color: var(--brand-primary); }
+.shell > aside nav a { color: var(--sidebar-text); }
+.shell > aside nav button.active { border-left: 3px solid var(--brand-accent); padding-left: 7px; }
+.panel, .stat, .role-card { box-shadow: 0 3px 14px color-mix(in srgb, var(--brand-primary) 3%, transparent); }
+.role-card:hover .arrow { color: var(--brand-accent-ink); }
+.role-icon { background: var(--brand-primary-soft); display: inline-flex; width: 48px; height: 48px; border-radius: 12px; align-items: center; justify-content: center; }
+.hero > .eyebrow { color: var(--brand-accent-ink); }
+.catalog-nav a.active { background: var(--brand-primary-soft); border-radius: 8px 8px 0 0; }
+input[type="checkbox"], input[type="radio"] { accent-color: var(--brand-primary); }
+input:hover, select:hover, textarea:hover { border-color: var(--ink-muted); }
+.route-point.current { border-color: var(--brand-accent); background: var(--brand-accent-soft); }
+.route-point.current .route-point-number { background: var(--brand-accent-ink); }
+.route-legend span:nth-child(1) { color: var(--brand-accent-ink); }
+.unloading-countdown { background: var(--brand-accent-soft); color: var(--ink); }
+.unloading-countdown.expired { background: var(--warning-soft); color: var(--warning); }
+.leaflet-container { font-family: inherit; }
+.leaflet-popup-content-wrapper { color: var(--ink); background: var(--surface); border-radius: 10px; }
+.leaflet-popup-content a { color: var(--brand-primary); }
+.leaflet-container .leaflet-control-attribution { color: var(--ink-muted); }
+/* Uniform main-area colours; navy backgrounds belong to the sidebar only. */
+body, .shell, .content, header, main, footer {
+  background-color: var(--canvas);
+  color: var(--ink);
+}
+.content button, .content .button,
+.content button:hover, .content .button:hover {
+  background-color: var(--canvas);
+  color: var(--ink);
+}
+.content .route-point-number,
+.content .route-point.current .route-point-number,
+.content .route-point.next .route-point-number {
+  background-color: var(--canvas);
+  color: var(--ink);
+}
+.hero-line span { color: var(--ink-muted); }
+.shell > aside { background-color: var(--sidebar); color: var(--sidebar-text); }
+.shell > aside nav a, .shell > aside nav button,
+.shell > aside nav button:hover, .shell > aside nav button.active {
+  color: var(--sidebar-text);
+}
+.shell > aside .brand span { color: var(--ink); }
+@media (max-width: 700px) {
+  .brand { width: 190px; max-width: 100%; }
+  .hero-logo { width: 130px; }
+  .header-brand > .brand-logo { width: 34px; }
+  footer { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  button, .button, .route-progress > span { transition: none; }
+}

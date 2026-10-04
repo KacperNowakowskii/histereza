@@ -1,46 +1,29 @@
-externalRef,businessId,date,cargoType,quantity,courierId,vehicleId,mustFollow,opens,closes
-D1,business1,2026-10-07,standard,1,courier1,vehicle1,,07:00,23:59
-D2,business2,2026-10-07,fresh,1,courier2,vehicle2,,07:00,23:59
-D3,business3,2026-10-07,cold,1,courier3,vehicle3,,07:00,23:59
-D4,business4,2026-10-07,standard,1,courier4,vehicle4,,07:00,23:59
-D5,business5,2026-10-07,fresh,1,courier5,vehicle5,,07:00,23:59
-D6,business6,2026-10-07,cold,1,courier6,vehicle6,,07:00,23:59
-D7,business7,2026-10-07,standard,1,courier7,vehicle7,,07:00,23:59
-D8,business8,2026-10-07,fresh,1,courier1,vehicle1,,07:00,23:59
-D9,business9,2026-10-07,cold,1,courier2,vehicle2,,07:00,23:59
-D10,business10,2026-10-07,standard,1,courier3,vehicle3,,07:00,23:59
-D11,business11,2026-10-07,fresh,1,courier4,vehicle4,,07:00,23:59
-D12,business12,2026-10-07,cold,1,courier5,vehicle5,,07:00,23:59
-D13,business13,2026-10-07,standard,1,courier6,vehicle6,,07:00,23:59
-D14,business14,2026-10-07,fresh,1,courier7,vehicle7,,07:00,23:59
-D15,business15,2026-10-07,cold,1,courier1,vehicle1,,07:00,23:59
-D16,business16,2026-10-07,standard,1,courier2,vehicle2,,07:00,23:59
-D17,business17,2026-10-07,fresh,1,courier3,vehicle3,,07:00,23:59
-D18,business18,2026-10-07,cold,1,courier4,vehicle4,,07:00,23:59
-D19,business19,2026-10-07,standard,1,courier5,vehicle5,,07:00,23:59
-D20,business20,2026-10-07,fresh,1,courier6,vehicle6,,07:00,23:59
-D21,business21,2026-10-07,cold,1,courier7,vehicle7,,07:00,23:59
-D22,business22,2026-10-07,standard,1,courier1,vehicle1,,07:00,23:59
-D23,business23,2026-10-07,fresh,1,courier2,vehicle2,,07:00,23:59
-D24,business24,2026-10-07,cold,1,courier3,vehicle3,,07:00,23:59
-D25,business25,2026-10-07,standard,1,courier4,vehicle4,,07:00,23:59
-D26,business1,2026-10-07,fresh,1,courier5,vehicle5,,07:00,23:59
-D27,business2,2026-10-07,cold,1,courier6,vehicle6,,07:00,23:59
-D28,business3,2026-10-07,standard,1,courier7,vehicle7,,07:00,23:59
-D29,business4,2026-10-07,fresh,1,courier1,vehicle1,,07:00,23:59
-D30,business5,2026-10-07,cold,1,courier2,vehicle2,,07:00,23:59
-D31,business6,2026-10-07,standard,1,courier3,vehicle3,,07:00,23:59
-D32,business7,2026-10-07,fresh,1,courier4,vehicle4,,07:00,23:59
-D33,business8,2026-10-07,cold,1,courier5,vehicle5,,07:00,23:59
-D34,business9,2026-10-07,standard,1,courier6,vehicle6,,07:00,23:59
-D35,business10,2026-10-07,fresh,1,courier7,vehicle7,,07:00,23:59
-D36,business11,2026-10-07,cold,1,courier1,vehicle1,,07:00,23:59
-D37,business12,2026-10-07,standard,1,courier2,vehicle2,,07:00,23:59
-D38,business13,2026-10-07,fresh,1,courier3,vehicle3,,07:00,23:59
-D39,business14,2026-10-07,cold,1,courier4,vehicle4,,07:00,23:59
-D40,business15,2026-10-07,standard,1,courier5,vehicle5,,07:00,23:59
-D41,business16,2026-10-07,fresh,1,courier6,vehicle6,,07:00,23:59
-D42,business17,2026-10-07,cold,1,courier7,vehicle7,,07:00,23:59
-D43,business18,2026-10-07,standard,1,courier1,vehicle1,,07:00,23:59
-D44,business19,2026-10-07,fresh,1,courier2,vehicle2,,07:00,23:59
-D45,business20,2026-10-07,cold,1,courier3,vehicle3,,07:00,23:59
+externalRef,businessId,businessName,date,cargoType,priority,courierId,vehicleId
+SAMPLE-1-1,business1,Restauracja Pod Lipą — Kazimierz,2026-10-08,standard,1,courier1,vehicle1
+SAMPLE-1-2,business2,Kawiarnia Ziarno — Kazimierz,2026-10-08,standard,0,courier2,vehicle2
+SAMPLE-1-3,business3,Piekarnia Poranna — Kazimierz,2026-10-08,standard,1,courier3,vehicle3
+SAMPLE-1-4,business4,Delikatesy Sąsiedzkie — Kazimierz,2026-10-08,standard,1,courier4,vehicle4
+SAMPLE-1-5,business5,Apteka Zielona — Kazimierz,2026-10-08,standard,1,courier5,vehicle5
+SAMPLE-1-6,business6,Hotel Nad Wisłą — Kazimierz,2026-10-08,fresh,2,courier1,vehicle1
+SAMPLE-1-7,business7,Sklep Papier i Pióro — Kazimierz,2026-10-08,fresh,0,courier2,vehicle2
+SAMPLE-1-8,business8,Pracownia Krawiecka — Kazimierz,2026-10-08,fresh,2,courier3,vehicle3
+SAMPLE-1-9,business9,Bistro Rynek — Kazimierz,2026-10-08,fresh,2,courier4,vehicle4
+SAMPLE-1-10,business1,Restauracja Pod Lipą — Kazimierz,2026-10-08,fresh,2,courier5,vehicle5
+SAMPLE-1-11,business2,Kawiarnia Ziarno — Kazimierz,2026-10-08,cold,3,courier1,vehicle1
+SAMPLE-1-12,business3,Piekarnia Poranna — Kazimierz,2026-10-08,standard,0,courier2,vehicle2
+SAMPLE-1-13,business4,Delikatesy Sąsiedzkie — Kazimierz,2026-10-08,standard,3,courier3,vehicle3
+SAMPLE-1-14,business5,Apteka Zielona — Kazimierz,2026-10-08,standard,3,courier4,vehicle4
+SAMPLE-1-15,business6,Hotel Nad Wisłą — Kazimierz,2026-10-08,standard,3,courier5,vehicle5
+SAMPLE-1-16,business7,Sklep Papier i Pióro — Kazimierz,2026-10-08,standard,0,courier1,vehicle1
+SAMPLE-1-17,business8,Pracownia Krawiecka — Kazimierz,2026-10-08,standard,0,courier2,vehicle2
+SAMPLE-1-18,business9,Bistro Rynek — Kazimierz,2026-10-08,standard,0,courier3,vehicle3
+SAMPLE-1-19,business1,Restauracja Pod Lipą — Kazimierz,2026-10-08,standard,0,courier4,vehicle4
+SAMPLE-1-20,business2,Kawiarnia Ziarno — Kazimierz,2026-10-08,standard,0,courier5,vehicle5
+SAMPLE-1-21,business3,Piekarnia Poranna — Kazimierz,2026-10-08,fresh,0,courier1,vehicle1
+SAMPLE-1-22,business4,Delikatesy Sąsiedzkie — Kazimierz,2026-10-08,fresh,0,courier2,vehicle2
+SAMPLE-1-23,business5,Apteka Zielona — Kazimierz,2026-10-08,fresh,0,courier3,vehicle3
+SAMPLE-1-24,business6,Hotel Nad Wisłą — Kazimierz,2026-10-08,fresh,0,courier4,vehicle4
+SAMPLE-1-25,business7,Sklep Papier i Pióro — Kazimierz,2026-10-08,fresh,0,courier5,vehicle5
+SAMPLE-1-26,business8,Pracownia Krawiecka — Kazimierz,2026-10-08,cold,0,courier1,vehicle1
+SAMPLE-1-27,business9,Bistro Rynek — Kazimierz,2026-10-08,standard,0,courier2,vehicle2
+SAMPLE-1-28,business1,Restauracja Pod Lipą — Kazimierz,2026-10-08,standard,0,courier3,vehicle3

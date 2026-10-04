@@ -1,0 +1,78 @@
+import { chromium, expect } from '@playwright/test';
+import assert from 'node:assert/strict';
+import { Repo } from '../server/src/db/repo';
+import { openDb } from '../server/src/db/db';
+import { seed } from '../server/src/db/seed';
+import { createApp } from '../server/src/api/app';
+
+// Izolowana baza: sprawdzenie formularzy nie resetuje ani nie zmienia danych użytkownika.
+const db = openDb(':memory:'); const repo = new Repo(db, seed);
+const before = repo.read();
+const server = createApp(repo).listen(0, '127.0.0.1');
+await new Promise<void>(resolve => server.once('listening', resolve));
+const base = `http://127.0.0.1:${(server.address() as { port: number }).port}`;
+let browser: Awaited<ReturnType<typeof chromium.launch>> | undefined;
+try {
+  browser = await chromium.launch({ channel: 'msedge', headless: true });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
+  page.on('dialog', d => void d.accept());
+  await page.goto(`${base}/dispatcher/businesses`);
+  await expect(page.getByRole('heading', { name: 'Baza biznesów' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Flota', exact: true })).toBeVisible();
+  await page.getByLabel('ID biznesu', { exact: true }).fill('ui-business');
+  await page.getByLabel('Nazwa biznesu', { exact: true }).fill('Sklep testowy');
+  await page.locator('.catalog-checks input[type=checkbox]').first().check();
+  await page.getByRole('button', { name: 'Dodaj biznes do bazy', exact: true }).click();
+  const businessRow = page.getByRole('row').filter({ hasText: 'ui-business' });
+  await expect(businessRow).toHaveCount(1);
+  await page.getByLabel('Wyszukaj po ID', { exact: true }).fill('ui-business');
+  await expect(page.getByLabel('Wyszukaj po nazwie', { exact: true })).toHaveValue('Sklep testowy');
+  await expect(page.getByLabel('Nazwa biznesu', { exact: true })).toHaveValue('Sklep testowy');
+  await page.getByLabel('Wyszukaj po nazwie', { exact: true }).fill('Sklep testowy');
+  await expect(page.getByLabel('Wyszukaj po ID', { exact: true })).toHaveValue('ui-business');
+  await page.getByLabel('Nazwa biznesu', { exact: true }).fill('Sklep po edycji');
+  await page.getByRole('button', { name: 'Zapisz biznes', exact: true }).click();
+  await expect(businessRow).toContainText('Sklep po edycji');
+  await page.getByLabel('Firma kurierska', { exact: true }).selectOption('org2');
+  await expect(businessRow).toHaveCount(0);
+  await page.getByLabel('Firma kurierska', { exact: true }).selectOption('org1');
+  await expect(businessRow).toHaveCount(1);
+  await businessRow.getByRole('button', { name: 'Usuń', exact: true }).click();
+  await expect(businessRow).toHaveCount(0);
+
+  await page.getByRole('link', { name: 'Flota', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Flota firmy' })).toBeVisible();
+  await page.getByLabel('ID pojazdu we flocie', { exact: true }).fill('ui-vehicle');
+  await page.getByLabel('Numer rejestracyjny', { exact: true }).fill('KR TEST9');
+  await page.getByLabel('Model / typ pojazdu', { exact: true }).fill('Furgon testowy');
+  await page.getByLabel('Wymiary zweryfikowane', { exact: true }).check();
+  await page.getByRole('button', { name: 'Dodaj pojazd do floty', exact: true }).click();
+  const vehicleRow = page.getByRole('row').filter({ hasText: 'ui-vehicle' });
+  await expect(vehicleRow).toHaveCount(1);
+  await vehicleRow.getByRole('button', { name: 'Edytuj', exact: true }).click();
+  await expect(page.getByLabel('Numer rejestracyjny', { exact: true })).toHaveValue('KR TEST9');
+  await page.getByLabel('Model / typ pojazdu', { exact: true }).fill('Furgon po edycji');
+  await page.getByLabel('Wysokość (m)', { exact: true }).fill('2.8');
+  await page.getByRole('button', { name: 'Zapisz pojazd', exact: true }).click();
+  await expect(vehicleRow).toContainText('Furgon po edycji');
+  await expect(vehicleRow).toContainText('2.8');
+  await page.getByLabel('Firma kurierska', { exact: true }).selectOption('org2');
+  await expect(vehicleRow).toHaveCount(0);
+  await page.getByLabel('Firma kurierska', { exact: true }).selectOption('org1');
+  await vehicleRow.getByRole('button', { name: 'Usuń', exact: true }).click();
+  await expect(vehicleRow).toHaveCount(0);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.getByRole('link', { name: 'Biznesy', exact: true })).toBeVisible();
+  await page.getByRole('link', { name: 'Dostawy', exact: true }).click();
+  await page.locator(".delivery-days button").filter({ hasText: "2026-10-07" }).click();
+  await page.getByRole('button', { name: 'Import CSV', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Import dostaw' })).toBeVisible();
+  assert.deepEqual(errors, []);
+  const after = repo.read();
+  for (const key of ['deliveries', 'routes', 'stops', 'reservations'] as const) assert.deepEqual(after[key], before[key]);
+  console.log('CATALOG UI OK: CRUD biznesów i floty, wyszukiwanie ID/nazwa, zakres firmy, telefon, brak błędów JS; trasy i dostawy bez zmian.');
+} finally {
+  await browser?.close();
+  await new Promise<void>(resolve => server.close(() => resolve())); db.close();
+}
