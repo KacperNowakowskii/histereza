@@ -7,7 +7,6 @@ Lokalne MVP dla hipotetycznych miejsc w historycznym centrum Krakowa. Wspólny p
 Wymagane Node.js 24 i npm. W terminalu VS Code:
 
 ```powershell
-cd "C:\Users\kacpe\OneDrive\Pulpit\histereza"
 npm.cmd ci
 npm.cmd run build
 npm.cmd start
@@ -20,8 +19,6 @@ Tryb programistyczny z automatycznym odświeżaniem:
 ```powershell
 npm.cmd run dev
 ```
-
-Frontend: http://localhost:5173, API: http://localhost:3001. Zatrzymaj wcześniej działający serwer, aby uniknąć zajętego portu.
 
 ## Pierwszy scenariusz
 
@@ -78,6 +75,7 @@ Oba testy integracyjne korzystają z izolowanego Symulatora i nie resetują gł�
 - `server/data/demo.sqlite`: baza tworzona przy pierwszym starcie, ignorowana przez Git. Encje przechowuje dokument stanu, kalendarz rezerwacji tabela z triggerami blokującymi kolizje i bufor, a dostawy osobna tabela z kluczami obcymi do biznesów, floty i kurierów. Zapis tych danych odbywa się w jednej transakcji.
 - `server/data/seed/reference.json`, `server/data/samples/*.csv`: automatycznie generowane fikcyjne dane (5 firm, 18 kurierów, 24 pojazdy, 45 biznesów, 14 miejsc, 198 dostaw i 500 historycznych postojów). Seed od zera, daty i przypadki demonstracyjne: [docs/DEMO-DATA.md](docs/DEMO-DATA.md).
 
+<<<<<<< HEAD
 ## Granice MVP
 
 System jest lokalnym demonstratorem zgodnie ze specyfikacją. Przełącznik ról i nagłówek `x-role` nie są logowaniem. Serwer nasłuchuje wyłącznie na `127.0.0.1`. Nie udostępniaj go publicznie bez uwierzytelniania i autoryzacji użytkowników.
@@ -91,3 +89,5 @@ Przy otwarciu starszej bazy aktualna migracja wykonuje kopię `server/data/demo.
 Panel firmy ma zakładki **Dostawy**, **Biznesy** i **Flota**. Biznesy i pojazdy można dodawać, edytować i usuwać w obrębie wybranej firmy. Wyszukiwanie biznesu po ID lub pełnej nazwie uzupełnia formularz; przy kilku jednakowych nazwach trzeba wskazać konkretny rekord. Flota przechowuje model, wymiary, ładowność, DMC, paliwo, normę Euro, rok produkcji, chłodnię i potwierdzenie wymiarów. Usunięcie rekordów wykorzystywanych przez dostawy jest blokowane. Parametry wpływające na aktywny plan można zmienić po zakończeniu dostaw.
 
 Zakładka Dostawy oferuje równorzędny **Import CSV** i **Dodaj ręcznie**, tworzenie biznesów i pojazdów w trakcie dodawania dostawy oraz listę z edycją i usuwaniem przygotowanych rekordów. Import jest atomowy: błędny wiersz blokuje także zapis nowych katalogów. Planner respektuje grupy priorytetowe; cut-off działa automatycznie o 00:00; kurier widzi własną trasę i może zgłaszać problemy oraz planować przerwy. Szczegóły kolumn CSV, przykładów i ograniczeń edycji: [docs/DELIVERY-ENTRY.md](docs/DELIVERY-ENTRY.md).
+=======
+>>>>>>> 7f4db3094ff801bf84744e59a33791300eac0b18
